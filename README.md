@@ -1,1 +1,1 @@
-# ers-scriptlibraries
+# ERS C++ SDK
