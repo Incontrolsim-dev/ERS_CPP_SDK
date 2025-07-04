@@ -5,7 +5,7 @@ macro(ERS_Download_SDK)
     FetchContent_Declare(
         ERS_ENGINE
         GIT_REPOSITORY https://github.com/incontrolsim/ERS_CPP_SDK.git
-        GIT_TAG        0.4.0
+        GIT_TAG        0.5.2
         )
     FetchContent_GetProperties(ERS_ENGINE)
     if(NOT ERS_ENGINE_POPULATED)
