@@ -1,42 +1,17 @@
 cmake_minimum_required (VERSION 3.20)
 
-macro(ERS_Download_SDK branchName)
-
-    message(STATUS "Selected SDK branch ${branchName}")
-
+macro(ERS_Download_SDK)
     Include(FetchContent)
     FetchContent_Declare(
         ERS_ENGINE
-        GIT_REPOSITORY https://gitlab.incontrolsim.com/enterprise-resource-simulator/public/ers_sdk.git
-        GIT_TAG        origin/${branchName}
+        GIT_REPOSITORY https://github.com/incontrolsim/ERS_CPP_SDK.git
+        GIT_TAG        0.5.2
         )
     FetchContent_GetProperties(ERS_ENGINE)
     if(NOT ERS_ENGINE_POPULATED)
-        message(STATUS "Downloading ERS SDK package for ${branchName} branch")
+        message(STATUS "Downloading ERS SDK package")
         FetchContent_Populate(ERS_ENGINE)
     endif()
-endmacro()
-
-macro(ERS_Download_SDK_Dictated)
-
-    # Get the current working branch
-    execute_process(
-    COMMAND git rev-parse --abbrev-ref HEAD
-    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
-    OUTPUT_VARIABLE GIT_BRANCH
-    OUTPUT_STRIP_TRAILING_WHITESPACE
-    )
-
-    if(
-    "${GIT_BRANCH}" STREQUAL "rc" OR
-    "${GIT_BRANCH}" STREQUAL "nightly" OR
-    "${GIT_BRANCH}" STREQUAL "main"
-    )
-        ERS_Download_SDK("${GIT_BRANCH}")
-    else()
-        ERS_Download_SDK("develop")
-    endif()
-
 endmacro()
 
 macro(ERS_RUN_VCPKG)
