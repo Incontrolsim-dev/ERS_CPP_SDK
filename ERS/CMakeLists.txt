@@ -23,11 +23,7 @@ if (NOT ERS_OMIT_DOWNLOAD_ENGINE)
 
     # Download the file (SHOW_PROGRESS is optional)
 
-    # Added size check for zero-byte cases
-
-    file(SIZE \"${DOWNLOAD_FILE}\" _ers_zip_size)
-
-    if(NOT EXISTS \"${DOWNLOAD_FILE}\" OR _ers_zip_size EQUAL 0)
+    if(NOT EXISTS \"${DOWNLOAD_FILE}\")
         message(STATUS "Downloading from ${DOWNLOAD_URL} to ${DOWNLOAD_FILE}")
         file(DOWNLOAD ${DOWNLOAD_URL} ${DOWNLOAD_FILE} SHOW_PROGRESS)
     endif()
