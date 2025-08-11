@@ -4,7 +4,7 @@ macro(ERS_Download_SDK TAG)
     Include(FetchContent)
     FetchContent_Declare(
         ERS_ENGINE
-        GIT_REPOSITORY https://github.com/incontrolsim/ERS_CPP_SDK.git
+        GIT_REPOSITORY https://github.com/Incontrolsim-dev/ERS_CPP_SDK.git
         GIT_TAG        ${TAG}
         )
     FetchContent_GetProperties(ERS_ENGINE)
