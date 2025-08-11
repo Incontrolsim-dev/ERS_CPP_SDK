@@ -1,11 +1,11 @@
 cmake_minimum_required (VERSION 3.20)
 
-macro(ERS_Download_SDK)
+macro(ERS_Download_SDK TAG)
     Include(FetchContent)
     FetchContent_Declare(
         ERS_ENGINE
         GIT_REPOSITORY https://github.com/incontrolsim/ERS_CPP_SDK.git
-        GIT_TAG        0.5.2
+        GIT_TAG        ${TAG}
         )
     FetchContent_GetProperties(ERS_ENGINE)
     if(NOT ERS_ENGINE_POPULATED)
