@@ -22,8 +22,7 @@ if (NOT ERS_OMIT_DOWNLOAD_ENGINE)
     set(EXTRACT_DIR "${CMAKE_BINARY_DIR}/ERS_Binaries")
 
     # Download the file (SHOW_PROGRESS is optional)
-
-    if(NOT EXISTS \"${DOWNLOAD_FILE}\")
+    if(NOT EXISTS "${DOWNLOAD_FILE}")
         message(STATUS "Downloading from ${DOWNLOAD_URL} to ${DOWNLOAD_FILE}")
         file(DOWNLOAD ${DOWNLOAD_URL} ${DOWNLOAD_FILE} SHOW_PROGRESS)
     endif()
