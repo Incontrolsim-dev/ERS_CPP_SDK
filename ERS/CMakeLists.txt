@@ -22,7 +22,12 @@ if (NOT ERS_OMIT_DOWNLOAD_ENGINE)
     set(EXTRACT_DIR "${CMAKE_BINARY_DIR}/ERS_Binaries")
 
     # Download the file (SHOW_PROGRESS is optional)
-    if(NOT EXISTS "${DOWNLOAD_FILE}")
+
+    # Added size check for zero-byte cases
+
+    file(SIZE \"${DOWNLOAD_FILE}\" _ers_zip_size)
+
+    if(NOT EXISTS \"${DOWNLOAD_FILE}\" OR _ers_zip_size EQUAL 0)
         message(STATUS "Downloading from ${DOWNLOAD_URL} to ${DOWNLOAD_FILE}")
         file(DOWNLOAD ${DOWNLOAD_URL} ${DOWNLOAD_FILE} SHOW_PROGRESS)
     endif()
