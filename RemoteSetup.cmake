@@ -5,12 +5,9 @@ macro(ERS_Download_SDK TAG)
     FetchContent_Declare(
         ERS_ENGINE
         GIT_REPOSITORY https://github.com/Incontrolsim-dev/ERS_CPP_SDK.git
-        GIT_TAG        ${TAG}
+        GIT_TAG        main
         )
-    FetchContent_GetProperties(ERS_ENGINE)
-    if(NOT ERS_ENGINE_POPULATED)
-        message(STATUS "Downloading ERS SDK package")
-        FetchContent_Populate(ERS_ENGINE)
-    endif()
+    message(STATUS "Downloading ERS SDK package for ${branchName} (shallow clone)")
+    FetchContent_MakeAvailable(ERS_ENGINE)
     include(${ers_engine_SOURCE_DIR}/setup.cmake)
 endmacro()
